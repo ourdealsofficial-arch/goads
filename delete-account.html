@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GoAds - Request Account Deletion</title>
+    <link rel="icon" type="image/png" href="favicon.png">
+    <meta name="description" content="Request deletion of your GoAds vendor or partner account in compliance with GDPR and Google Play Store policies. Permanently erase your profiles, reviews history, and data.">
+    <link rel="canonical" href="https://goads.ai/delete-account.html">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css?v=1.0">
+    <style>
+        .delete-page-section {
+            padding: 160px 0 100px 0;
+            min-height: 80vh;
+            display: flex;
+            align-items: center;
+        }
+        .delete-card {
+            background: white;
+            border-radius: 24px;
+            padding: 48px;
+            max-width: 680px;
+            margin: 0 auto;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(37, 99, 235, 0.12);
+        }
+        .delete-header {
+            margin-bottom: 28px;
+            text-align: center;
+        }
+        .delete-badge {
+            display: inline-block;
+            padding: 6px 14px;
+            background: #FEE2E2;
+            color: #DC2626;
+            font-size: 13px;
+            font-weight: 800;
+            border-radius: 20px;
+            margin-bottom: 14px;
+        }
+        .delete-header h1 {
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+        .delete-header p {
+            color: var(--slate-600);
+            font-size: 15px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 14px;
+            font-weight: 700;
+            color: var(--slate-800);
+            margin-bottom: 6px;
+        }
+        .form-control {
+            width: 100%;
+            padding: 14px 16px;
+            border-radius: 12px;
+            border: 1.5px solid var(--slate-200);
+            font-family: var(--font-body);
+            font-size: 14.5px;
+            transition: border-color 0.2s;
+        }
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+        .warning-box {
+            background: #FFFBEB;
+            border: 1px solid #FCD34D;
+            border-radius: 12px;
+            padding: 16px;
+            font-size: 13px;
+            color: #92400E;
+            margin-bottom: 24px;
+            line-height: 1.5;
+        }
+        .btn-submit-delete {
+            width: 100%;
+            padding: 16px;
+            background: #DC2626;
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 700;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.2s;
+        }
+        .btn-submit-delete:hover {
+            background: #B91C1C;
+            transform: translateY(-2px);
+        }
+        .back-home-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-align: center;
+            width: 100%;
+            color: var(--primary);
+            font-weight: 700;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .back-home-link:hover {
+            text-decoration: underline;
+        }
+        .success-state {
+            display: none;
+            text-align: center;
+            padding: 20px 0;
+        }
+        .success-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 50%;
+            background: #D1FAE5;
+            color: #059669;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+            margin: 0 auto 18px auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="blobs-container">
+        <div class="blob-bg blob-blue"></div>
+        <div class="blob-bg blob-cyan"></div>
+        <div class="grid-overlay"></div>
+    </div>
+
+    <!-- Header Navbar -->
+    <header class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo-wrapper">
+                <img src="favicon.png" alt="GoAds Icon" class="logo-icon-img">
+                <div class="logo">
+                    <span class="logo-main">Go<span>Ads</span></span>
+                    <span class="logo-sub">AI Vendor Reputation & Marketing</span>
+                </div>
+            </a>
+            <div class="header-actions">
+                <a href="index.html" class="btn btn-secondary" style="padding: 10px 20px; font-size: 14px;">&larr; Back to Home</a>
+            </div>
+        </div>
+    </header>
+
+    <main class="delete-page-section">
+        <div class="container">
+            <div class="delete-card">
+                <div id="form-container">
+                    <div class="delete-header">
+                        <span class="delete-badge">GDPR & Google Play Compliance</span>
+                        <h1>Request Account Deletion</h1>
+                        <p>We respect your privacy. Submitting this form will initiate the permanent deletion of your GoAds account and all associated data.</p>
+                    </div>
+
+                    <form id="delete-form" onsubmit="handleDeleteSubmit(event)">
+                        <div class="form-group">
+                            <label for="account-type">Account Type</label>
+                            <select id="account-type" class="form-control" required>
+                                <option value="business">GoAds Business / Vendor Account</option>
+                                <option value="partner">GoAds Partner / Agency Account</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="vendor-phone">Registered Phone Number</label>
+                            <input type="tel" id="vendor-phone" class="form-control" placeholder="+91 98765 43210" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="vendor-email">Registered Email Address</label>
+                            <input type="email" id="vendor-email" class="form-control" placeholder="vendor@example.com" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="deletion-reason">Reason for Leaving (Optional)</label>
+                            <textarea id="deletion-reason" class="form-control" rows="3" placeholder="Tell us how we could have improved..."></textarea>
+                        </div>
+
+                        <div class="warning-box">
+                            <strong>⚠️ Important Note:</strong> Deleting your account will permanently disconnect your Google Review QR Code, stop all automated AI review replies, revoke official Instagram & Facebook posting permissions, and remove your historical review analytics within 14 business days.
+                        </div>
+
+                        <button type="submit" class="btn-submit-delete" id="btn-submit">Confirm Account Deletion Request</button>
+                    </form>
+                </div>
+
+                <div id="success-state" class="success-state">
+                    <div class="success-icon">✓</div>
+                    <h2>Request Received</h2>
+                    <p style="color: var(--slate-600); margin: 12px 0 24px 0; font-size: 15px;">
+                        Your account deletion ticket has been registered. An SMS & Email confirmation with verification code will be sent to your registered details within 24 hours.
+                    </p>
+                    <a href="index.html" class="btn btn-gradient-blue" style="padding: 12px 24px;">Return to GoAds Home</a>
+                </div>
+
+                <a href="index.html" class="back-home-link">&larr; Return to Home Page</a>
+                <div style="margin-top: 24px; padding-top: 16px; border-top: 1px solid var(--slate-200); text-align: center; font-size: 13px; color: var(--slate-500); display: flex; justify-content: center; gap: 16px;">
+                    <a href="../goads_pp/index.html#privacy" target="_blank" style="color: var(--slate-600); text-decoration: none;">Privacy Policy</a>
+                    <span>•</span>
+                    <a href="../goads_pp/index.html#terms" target="_blank" style="color: var(--slate-600); text-decoration: none;">Terms & Conditions</a>
+                    <span>•</span>
+                    <a href="../goads_pp/index.html#deletion" target="_blank" style="color: var(--slate-600); text-decoration: none;">Data Deletion Policy</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function handleDeleteSubmit(e) {
+            e.preventDefault();
+            const formContainer = document.getElementById('form-container');
+            const successState = document.getElementById('success-state');
+            const btnSubmit = document.getElementById('btn-submit');
+            
+            btnSubmit.textContent = 'Processing request...';
+            btnSubmit.style.opacity = '0.7';
+            btnSubmit.disabled = true;
+
+            setTimeout(() => {
+                formContainer.style.display = 'none';
+                successState.style.display = 'block';
+            }, 800);
+        }
+    </script>
+</body>
+</html>
