@@ -226,41 +226,73 @@ h1, h2, h3, h4, h5, h6 {
 .logo-wrapper {
     display: flex;
     align-items: center;
-    gap: 12px;
     text-decoration: none;
-}
-
-.logo-icon-img {
-    width: 48px;
-    height: 48px;
-    border-radius: 12px;
-    box-shadow: 0 6px 18px rgba(37, 99, 235, 0.22);
-    object-fit: contain;
-    display: block;
-    transition: transform 0.2s ease;
-}
-
-.logo-wrapper:hover .logo-icon-img {
-    transform: scale(1.05);
+    padding: 4px 0;
 }
 
 .logo {
     display: flex;
     flex-direction: column;
     text-decoration: none;
-    line-height: 1.1;
+    line-height: 1;
+}
+
+.logo-brand-mark {
+    display: inline-flex;
+    align-items: baseline;
+    position: relative;
+    padding-top: 16px;
 }
 
 .logo-main {
     font-family: var(--font-heading);
-    font-size: 28px;
-    font-weight: 800;
-    color: var(--primary);
-    letter-spacing: -0.5px;
+    font-size: 34px;
+    font-weight: 900;
+    color: #002856;
+    letter-spacing: -0.6px;
+    display: inline-flex;
+    align-items: baseline;
+    line-height: 1;
+    transition: transform 0.2s ease;
 }
 
-.logo-main span {
-    color: var(--accent-cyan);
+.logo-wrapper:hover .logo-main {
+    transform: scale(1.02);
+}
+
+.logo-a-wrap {
+    position: relative;
+    display: inline-block;
+}
+
+.logo-leaf-box {
+    position: absolute;
+    top: -6px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 26px;
+    height: 18px;
+    display: block;
+    pointer-events: none;
+}
+
+.logo-leaf-svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    filter: drop-shadow(0 1px 2px rgba(46, 125, 50, 0.3));
+}
+
+.logo-registered-wrap {
+    display: inline-flex;
+    align-items: center;
+    align-self: flex-start;
+    margin-top: -2px;
+    margin-left: 3px;
+}
+
+.logo-registered-svg {
+    display: block;
 }
 
 .logo-sub {
@@ -268,6 +300,7 @@ h1, h2, h3, h4, h5, h6 {
     color: var(--slate-500);
     font-weight: 600;
     letter-spacing: 0.3px;
+    margin-top: 4px;
 }
 
 .nav-right-group {
@@ -427,7 +460,27 @@ h1, h2, h3, h4, h5, h6 {
     display: grid;
     grid-template-columns: 1.15fr 0.85fr;
     align-items: center;
-    gap: 70px;
+    column-gap: 70px;
+    row-gap: 0;
+}
+
+.hero-text-block {
+    grid-column: 1;
+    grid-row: 1;
+}
+
+.hero-actions-block {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.hero-visual {
+    grid-column: 2;
+    grid-row: 1 / span 2;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .hero-content {
@@ -1051,6 +1104,7 @@ h1, h2, h3, h4, h5, h6 {
 
 .founder-photo-right {
     width: 230px;
+    border-radius: 20px;
 }
 
 .founder-bottom-info {
@@ -1538,9 +1592,25 @@ h1, h2, h3, h4, h5, h6 {
         display: flex;
     }
     .hero-container {
-        grid-template-columns: 1fr;
-        gap: 40px;
+        display: flex;
+        flex-direction: column;
+        gap: 36px;
         text-align: center;
+    }
+    .hero-text-block {
+        order: 1;
+        max-width: 100%;
+        margin: 0 auto;
+    }
+    .hero-visual {
+        order: 2;
+        margin: 10px auto;
+    }
+    .hero-actions-block {
+        order: 3;
+        max-width: 500px;
+        margin: 0 auto;
+        width: 100%;
     }
     .hero-content {
         max-width: 100%;
